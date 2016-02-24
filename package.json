@@ -1,0 +1,33 @@
+{
+    "name": "o2p",
+    "description": "plsql to pg",
+   "version": "0.0.1",
+   "author": "niquola",
+   "dependencies": {
+        "antlr4": "latest"
+    },
+   "repository": {
+       "type": "git",
+       "url": "https://github.com/niquola/o2p"
+    },
+   "devDependencies": {
+       "coffee-script": "latest",
+       "pg-native": "latest",
+       "mocha": "latest"
+    },
+   "engines": {
+       "node": ">=0.12"
+    },
+   "homepage": "https://github.com/niquola/o2p",
+   "files": [
+        "bin",
+        "lib",
+        "src"
+    ],
+   "scripts": {
+       "publish": "coffee -o lib/ -c src/ && npm publish",
+       "migrate": "./build.sh && cat tmp/build.sh | psql $DATABASE_URL",
+       "reload": "plpl/bin/plpl reload",
+       "test": "node_modules/mocha/bin/mocha --compilers mocha --compilers coffee:coffee-script/register --recursive"
+    }
+}
